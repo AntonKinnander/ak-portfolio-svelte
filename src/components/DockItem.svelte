@@ -24,14 +24,14 @@
 	const IconComponent = iconMap[icon];
 </script>
 
-<div class="group relative flex cursor-pointer items-end" onmouseenter={() => (isHovered = true)} onmouseleave={() => (isHovered = false)}>
-	<div class={cn("flex h-12 w-12 items-center border-2 justify-center p-1.5 transition-all duration-200 hover:bg-white/20", isHovered && "h-14 w-14 -translate-y-4")}>
-		<svelte:component this={IconComponent} class={cn("h-full w-full text-white transition-all duration-200", isHovered && "scale-110")} />
+<div class="group relative flex cursor-pointer items-end pt-2" onmouseenter={() => (isHovered = true)} onmouseleave={() => (isHovered = false)}>
+	<div class={cn("flex h-14 w-14 items-center border-2 justify-center p-1.5 transition-all duration-200 hover:bg-white/20", isHovered && "h-14 w-14 -translate-y-4")}>
+		<svelte:component this={IconComponent} class={cn("h-full w-full text-white transition-all duration-200", isHovered && "scale-100")} />
 	</div>
 
 	{#if isHovered}
 		<div class="absolute -top-8 left-1/2 w-max -translate-x-1/2" transition:fade={{ duration: 150 }}>
-			<span class="px-2 py-1 text-sm text-white">
+			<span class="text-sm text-white">
 				{name}
 			</span>
 		</div>

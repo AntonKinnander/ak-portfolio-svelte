@@ -2,7 +2,6 @@
   // Your script logic here
 </script>
 
-<div class="full-height"></div>
 
 <style>
   :global(body, html) {
@@ -10,11 +9,21 @@
     padding: 0;
     height: 100%;
   }
-
+  
   .full-height {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-</style>
+  </style>
+
+<div class="full-height">
+ <h1>hey2</h1>
+</div>
+<section id="projects" class="full-height">
+<div class="flex flex-col gap-2 items-center">
+  hey
+</div>
+
+</section>

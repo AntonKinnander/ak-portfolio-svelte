@@ -47,12 +47,12 @@
         ? "opacity-full pointer-events-auto"
         : "opacity-0 pointer-events-none")}
   >
-    <button
+    <!-- <button
       on:click={goTop}
       class="ml-auto rounded full text-white px-3 sm:px-4 hover:bg-slate-800 cursor-pointer"
     >
       <i class="fa-solid fa-arrow-up" />
-    </button>
+    </button> -->
   </div>
   <!-- Dock position absolute to make it float above slot -->
 

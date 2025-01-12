@@ -92,7 +92,13 @@ html {
 body {
   background: url('./assets/background.svg') no-repeat center  calc(0px - 111vh) fixed;
   background-size: max(350vh,120vw);
+  height: 100vh;
 
+}
+
+main {
+  
+  height: calc(100% - 1.75rem);
 }
 
 

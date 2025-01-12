@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { fade } from "svelte/transition";
-	import { Home, Folder, Mail, Image, Settings, Music } from "lucide-svelte";
 	import { cn } from "$lib/utils";
 
 
@@ -10,30 +9,39 @@
 	// State for hover effect
 	let isHovered = $state(false);
 
-	// Map icon names to components
-	const iconMap = {
-		home: Home,
-		folder: Folder,
-		mail: Mail,
-		image: Image,
-		settings: Settings,
-		music: Music,
-	};
 
-	// Get icon component from map
-	const IconComponent = iconMap[icon];
 </script>
-
-<div class="group relative flex cursor-pointer items-end pt-2" onmouseenter={() => (isHovered = true)} onmouseleave={() => (isHovered = false)}>
-	<div class={cn("flex h-14 w-14 items-center border-2 justify-center p-1.5 transition-all duration-200 hover:bg-white/20", isHovered && "h-14 w-14 -translate-y-4")}>
-		<svelte:component this={IconComponent} class={cn("h-full w-full text-white transition-all duration-200", isHovered && "scale-100")} />
+<a href="{link}" >
+	<div 
+	class="group relative flex cursor-pointer items-end pt-4" 
+	onmouseenter={() => (isHovered = true)} 
+	onmouseleave={() => (isHovered = false)}
+  >
+	<div 
+	  class={cn(
+		"flex flex-col items-center justify-center border-2 transition-all duration-300",
+		isHovered ? "scale-110 -translate-y-7" : "scale-100",
+		"bg-[#0f0098] hover:bg-[linear-gradient(270deg,_#ffffff40,_#0f0098)]"
+	  )}
+	  style="--size: 7.5rem; width: var(--size); height: var(--size);"
+	>
+	  <img 
+		src={icon} 
+		alt="{name} navigation icon" 
+		class="h-[70%] w-[70%] text-white -mb-1 transition-transform duration-300"
+	  />
+	  <p class="text-xl text-center mb-1.5"> {name} </p>
 	</div>
-
-	{#if isHovered}
-		<div class="absolute -top-8 left-1/2 w-max -translate-x-1/2" transition:fade={{ duration: 150 }}>
-			<span class="text-sm text-white">
-				{name}
-			</span>
-		</div>
-	{/if}
-</div>
+  
+	<!-- {#if isHovered}
+	  <div 
+		class="absolute -top-10 left-1/2 w-max -translate-x-1/2"
+		transition:fade={{ duration: 150 }}
+	  >
+		<span class="text-xl text-white pt-1">
+		  {name}
+		</span>
+	  </div>
+	{/if} -->
+  </div>
+  </a>

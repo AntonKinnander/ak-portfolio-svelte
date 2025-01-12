@@ -21,6 +21,8 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
-		"lucide-svelte": "^0.468.0"
+		"gsap": "^3.12.5",
+		"lucide-svelte": "^0.468.0",
+		"scrollmagic": "^2.0.8"
 	}
 }

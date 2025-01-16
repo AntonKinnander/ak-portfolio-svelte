@@ -1,42 +1,62 @@
 <script>
   export let tabs = [];
   import DateTime from "./DateTime.svelte";
+  import { gsap } from "gsap";
+  import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+  gsap.registerPlugin(ScrollToPlugin);
   export let goToSection; // Receive the function from the parent
 
-  // function handleTabClick(sect) {
-  //   if (goToSection) {
-  //     goToSection(sect);
-  //   }
-  // }
+  import { onMount } from "svelte";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { scrollToSection } from "./utils/scroll-utils.js";
+  gsap.registerPlugin(ScrollTrigger);
 
+  let headerHeight = 0;
+  onMount(() => {
+    let scrollTween;
+    const header = document.getElementById("header");
+    const panels = document.querySelectorAll("section"); // Assuming sections are the panels
+
+    if (header) {
+      headerHeight = header.offsetHeight;
+    }
+
+    function goToSection(index) {
+      scrollTween = gsap.to(window, {
+        scrollTo: { y: index * (window.innerHeight - headerHeight), autoKill: false },
+        duration: 1,
+        onComplete: () => (scrollTween = null),
+        overwrite: true,
+      });
+      console.log(headerHeight);
+    }
+
+    ScrollTrigger.create({
+      start: 0,
+      end: "max",
+      snap: 1 / (panels.length - 1),
+    });
+  });
 </script>
 
 <header
   id = "header" class={"sticky h-7 z-[10] top-0 duration-200 px-1 py-0.5 flex items-center justify-start gap-6 backdrop-blur-lg border-b border-solid border-[#ffffff]"}
 >
-  <h4 class="font-medium flex gap-3 items-center">
+ <a href="" on:click={(event) => { event.preventDefault(); scrollToSection('home'); }}  ><h4 class="font-medium flex gap-3 items-center hover:text-lime-400">
     <!-- Current page title instead of name, add dropdown menu -->
     <img src="./assets/ak-logo.svg" class="h-5" alt="logo" /> Anton Kinnander 
   </h4>
-
+</a> 
   <div
     class="flex flex-initial flex-row items-center gap-4 justify-start hidden md:block"
   >
-    <!-- {#each tabs as tab, index}
-      {#if tab.location !== 3}
-        <a class="hover:text-lime-400 mr-4" href={tab.link}>
-          {tab.name}
-        </a>
-      {/if}
-    {/each} -->
 
 
     {#each tabs as tab}
     {#if tab.type !== 3}
     {#if tab.section}
-    <button class="hover:text-lime-400 mr-4" on:click={() => goToSection(tab.section - 1)}>
-        {tab.name}
-    </button>
+    <a href="{tab.link}" class="hover:text-lime-400 mr-4" on:click={(event) => { event.preventDefault(); scrollToSection(tab.link); }}> {tab.name}</a>
+  
     {:else}
     <a class="hover:text-lime-400 mr-4" href={tab.link} target="_blank">
       {tab.name}

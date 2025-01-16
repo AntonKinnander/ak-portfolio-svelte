@@ -104,7 +104,78 @@ main {
 
 h1,
 h2,
-h3.tinos {
+h3, .tinos {
   font-family: "Tinos", sans-serif;
+}
+
+/* Glass Hover Animation */
+
+:root { 
+  --g1: rgba(255, 255, 255, 0.438);
+  --g2: rgba(255, 255, 255, 0.082);
+  --g3: rgba(255, 255, 255, 0.199);
+}
+
+
+    .card {
+        --base-width: min(calc(23vw + 4vh), calc(25vh + 1vw));
+    width: var(--base-width);
+    height: calc(var(--base-width) * 14/9);
+    }
+
+    @media (max-width: 768px) {
+    .card{
+        --base-width: calc(50vw - 1.5rem);
+    width: var(--base-width);
+    height: calc(var(--base-width) * 14/9);
+}
+}
+.card{
+    cursor: pointer;
+}
+
+.overlay {
+    /* background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 0%); */
+    z-index: 11;
+    pointer-events: none;
+    margin: 0;
+    height: 125%;
+    width: 100%;    
+}
+
+.overlay:before {
+    background: linear-gradient(
+    130deg, 
+    transparent 0% 33%, 
+    var(--g1) 66%, 
+    var(--g2) 83.5%, 
+    var(--g3) 100%
+  );
+  background-position: 0% 0%;
+  background-size: 300% 300%;
+  content: "";
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  transition: background-position 700ms ease, transform 700ms ease;
+  z-index: 1;
+}
+
+.card:hover .overlay:before, .dockItem:hover .dockOverlay:before {
+    background-position: 100% 100%;
+    transform: scale(1.08, 1.03);
+}
+
+.card:hover img{
+    transform: scale(1.08);
+    transition: transform 700ms ease;
+}
+
+.card:hover:before, .dockItem:hover:before{
+    transform: scale(1.03, 1.08);
+    z-index: -1;
 }
 

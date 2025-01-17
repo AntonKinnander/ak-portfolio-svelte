@@ -3,6 +3,7 @@
   import gsap from "gsap";
   import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
   import PageProjects from "./PageProjects.svelte";
+  import ProjectView from "./ProjectView.svelte";
 
   if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -11,6 +12,8 @@
   let panels;
   let headerHeight = 0;
   let blurValue = 0; // Initialize blurValue
+  // let opacityValue = 0;
+   // Initialize opacityValue
 
   onMount(() => {
     let scrollTween;
@@ -49,15 +52,26 @@
     });
 
     // Track scroll to update blurValue
-    const updateBlurValue = () => {
-      blurValue = window.scrollY * 0.0117 -3; // Adjust multiplier as needed
+    const updateBackground = () => {
+      // blurValue = window.scrollY * 0.007 -3; // Adjust multiplier as needed
+      // exponmential blur effect - compare against window. innerheight to ensure consistent blur when resizing 
+      // blurValue = Math.pow(scrollY, 1.27) * (0.85 / window.innerHeight);
+      blurValue = Math.pow(window.scrollY, 1.1) * (1.5 / window.innerHeight);
+
+      // opacityValue = Math.min(1, scrollY / (window.innerHeight - 100));
+      // console.log(scrollY);
+      // console.log(window.innerHeight);
+      // console.log(opacityValue);
+      console.log(blurValue);
+
       document.documentElement.style.setProperty("--blur-value", `${blurValue}px`);
+      // document.documentElement.style.setProperty("--opacity-value", `${opacityValue}`);
     };
 
-    window.addEventListener("scroll", updateBlurValue);
+    window.addEventListener("scroll", updateBackground);
 
     return () => {
-      window.removeEventListener("scroll", updateBlurValue);
+      window.removeEventListener("scroll", updateBackground);
     };
   });
 </script>
@@ -75,9 +89,16 @@
 
   .blurred {
     /* Default blur effect */
-    backdrop-filter: blur(var(--blur-value, 10));
-    transition: backdrop-filter 0.1s ease; /* Smooth transition */
+    backdrop-filter: blur(var(--blur-value, 2));
+    
+  
+    /* opacity: var(--opacity-value, 0); */
+    /* fill-opacity: var(--opacity-value, 0); */
+    transition: backdrop-filter 0.3s ease; /* Smooth transition */
+    /* transition: opacity  0.3s ease; Smooth transition */
   }
+
+
 
   :global(body, html) {
     /* hide scrollbar on all browsers */
@@ -92,10 +113,13 @@
 
 
 <div bind:this={panels} class="panels">
-  <section class="panel" id="home">
+  <section class="panel blurred" id="home">
   </section>
   <section class="panel blurred"  id="projects">
     <PageProjects />
+  </section>
+  <section class="panel blurred"  id="projects">
+    <ProjectView />
   </section>
   <!-- <section class="panel" id="home"></section> -->
 </div>

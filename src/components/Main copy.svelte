@@ -115,23 +115,20 @@
     transition: backdrop-filter 0.3s ease; /* Smooth transition */
   }
 
-  .outer-background {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    overflow: visible;
-
-  }
-
   .background {
-    position: relative;
-    top: calc(0px - 111vh);
-   left: 50%;
-   transform: translateX(-50%);
-   width: 350vh; /* Matches `background-size: max(350vh, 120vw)` */
-   height: 350vh;
-    z-index: -1; /* Ensure it stays behind the content */
+    position: fixed;
+    width:max(350vh, 120vw);
+    z-index: -1;
+    scale: 1;
+    margin-right: auto;
+    margin-left: auto;
+    left: -37%;
+    right: 37%;
+    
+    /* padding-bottom: 111vh; */
+    margin-bottom: -5vh;
+   /* padding-bottom: 29vh; */
+
   }
  
  
@@ -173,7 +170,7 @@
   </section>
 </div>
 <!-- background covering viewport bind:this={blurElement}-->
- <div class="outer-background bottom-0"> <div class="background bottom-0"><Background /></div> </div>
+ <div class="background fixed bottom-0"> <Background /> </div>
 <div class="z-5 fixed top-0 w-full h-1/6 bg-gradient-to-b from-[var(--activeBG)]/40"></div>
 <div class="z-5 fixed bottom-0 w-full h-1/6 bg-gradient-to-t from-[var(--activeBG)]"></div>
 

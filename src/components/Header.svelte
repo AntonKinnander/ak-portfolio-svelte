@@ -44,6 +44,14 @@
   });
 </script>
 
+<style>
+:global(h4:hover .cls-1) {
+  fill: #fff;
+}
+
+
+</style>
+
 <header
   id="header"
   class={"sticky h-7 z-[10] top-0 duration-200 px-1 py-0.5 flex items-center justify-start gap-6 backdrop-blur-lg border-b border-solid border-[var(--activeFG)]"}
@@ -59,7 +67,7 @@
     >
       <!-- Current page title instead of name, add dropdown menu -->
       <!-- <img src="./assets/ak-logo.svg" class="h-5" alt="logo" />  -->
-      <div class="h-5"><AkLogo class="h-5" /></div>
+      <div class="h-5"><AkLogo/></div>
       Anton Kinnander
     </h4>
   </a>

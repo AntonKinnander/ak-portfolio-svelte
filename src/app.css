@@ -118,8 +118,8 @@ h3,
 }
 
 /* svgs */
-svg {
-  /* width: auto; */
+svg.fill{
+  fill: var(--activeFG);
 }
 
 /* Glass Hover Animation */

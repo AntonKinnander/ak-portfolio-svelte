@@ -3,7 +3,8 @@
   import gsap from "gsap";
   import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
   import PageProjects from "./PageProjects.svelte";
-  import ProjectView from "./ProjectView.svelte";
+  import ProjectDrawer from "./ProjectDrawer.svelte";
+  import { DrawerTrigger } from "$lib/components/ui/drawer";
 
   if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -12,14 +13,22 @@
   let panels;
   let headerHeight = 0;
   let blurValue = 0; // Initialize blurValue
+  let lastBlurValue = 0;
   // let opacityValue = 0;
    // Initialize opacityValue
+   let isDrawerOpen = true;
+  //  let drawerTrigger = null;
+
+
+
+
 
   onMount(() => {
     let scrollTween;
     const panelElements = Array.from(panels.children);
     const header = document.getElementById("header");
-
+    //This fixes drawer opening animations so i keep it 
+    isDrawerOpen = false; 
     if (header) {
       headerHeight = header.offsetHeight;
     }
@@ -56,23 +65,35 @@
       // blurValue = window.scrollY * 0.007 -3; // Adjust multiplier as needed
       // exponmential blur effect - compare against window. innerheight to ensure consistent blur when resizing 
       // blurValue = Math.pow(scrollY, 1.27) * (0.85 / window.innerHeight);
-      blurValue = Math.pow(window.scrollY, 1.1) * (1.5 / window.innerHeight);
 
-      // opacityValue = Math.min(1, scrollY / (window.innerHeight - 100));
-      // console.log(scrollY);
-      // console.log(window.innerHeight);
-      // console.log(opacityValue);
+      // Prevent issue were opening drawer sets blur to 0
+      if(blurValue > 0){
+      lastBlurValue = blurValue;
+      }
+     
+      if(!isDrawerOpen){
+        blurValue = Math.pow(window.scrollY, 1.1) * (1.5 / window.innerHeight);
+      }
+      else{
+        blurValue = lastBlurValue;
+      }
+      
+
       console.log(blurValue);
 
       document.documentElement.style.setProperty("--blur-value", `${blurValue}px`);
-      // document.documentElement.style.setProperty("--opacity-value", `${opacityValue}`);
+    
     };
 
     window.addEventListener("scroll", updateBackground);
+    
 
     return () => {
       window.removeEventListener("scroll", updateBackground);
     };
+
+    
+    
   });
 </script>
 
@@ -87,44 +108,52 @@
     font-size: 2rem;
   }
 
-  .blurred {
+  .blurred{
     /* Default blur effect */
-    backdrop-filter: blur(var(--blur-value, 2));
-    
-  
-    /* opacity: var(--opacity-value, 0); */
-    /* fill-opacity: var(--opacity-value, 0); */
+    backdrop-filter: blur(var(--blur-value, 2px));
     transition: backdrop-filter 0.3s ease; /* Smooth transition */
-    /* transition: opacity  0.3s ease; Smooth transition */
   }
-
+ 
+ 
 
 
   :global(body, html) {
     /* hide scrollbar on all browsers */
     scrollbar-width: none;
     -ms-overflow-style: none;
-
     margin: 0;
     padding: 0;
     height: 100%;
   }
 </style>
 
+{#if isDrawerOpen}
+<ProjectDrawer bind:open={isDrawerOpen}>  </ProjectDrawer>
+{/if}
+
+
 
 <div bind:this={panels} class="panels">
   <section class="panel blurred" id="home">
+    <button on:click={() => (isDrawerOpen = !isDrawerOpen)}>
+      Toggle Drawer
+  </button>
   </section>
   <section class="panel blurred"  id="projects">
     <PageProjects />
   </section>
-  <section class="panel blurred"  id="projects">
-    <ProjectView />
+  <section class="panel blurred" id="home2">
+    <!-- <button on:click={() => (isDrawerOpen = !isDrawerOpen)}>
+      Toggle Drawer
+  </button> -->
+
+  <button data-melt-dialog-trigger="" data-dialog-trigger="" on:click={() => (isDrawerOpen = !isDrawerOpen)}>
+    Toggle Drawer
+</button>
   </section>
-  <!-- <section class="panel" id="home"></section> -->
 </div>
 <!-- background covering viewport bind:this={blurElement}-->
-<div class="fixed top-0 w-full h-1/6 bg-gradient-to-b from-[#0f0098]/30"></div>
-<div class="fixed bottom-0 w-full h-1/6 bg-gradient-to-t from-[#0f0098]/30"></div>
-<!-- <div id="background" class="w-full h-full fixed top-0 left-0 z-[-1]"
-></div>  -->
+<div class="z-5 fixed top-0 w-full h-1/6 bg-gradient-to-b from-[var(--activeBG)]/40"></div>
+<div class="z-5 fixed bottom-0 w-full h-1/6 bg-gradient-to-t from-[var(--activeBG)]"></div>
+
+

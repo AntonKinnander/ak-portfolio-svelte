@@ -1,36 +1,23 @@
 <!-- 9/16 PROJECT CARD -->
-<div class="card relative flex flex-col border border-white border-1 overflow-hidden bg-[#0f0098]">
+<div class="card relative flex flex-col border border-[var(--activeFG)] border-1 border-b-none overflow-hidden bg-[var(--activeBG)]" >
 
     <div class="image w-full h-3/4 flex justify-center items-center bg-gray-200 ">
         <div class="overlay absolute"></div>
-        <img src="https://storage.needpix.com/rsynced_images/monkey-2596865_1280.jpg" alt="" class="z-9 w-full h-full object-cover border-white border-b-1 ">
+        <img src="https://storage.needpix.com/rsynced_images/monkey-2596865_1280.jpg" alt="" class="z-9 w-full h-full object-cover border-[var(--activeFG)] border-b-1 ">
     </div>
-    <div class="z-10 description p-3 text-left flex-grow bg-[#0f0098] border-t border-white ">
+    <div class="z-10 description p-3 text-left flex-grow bg-[var(--activeBG)] border-t border-[var(--activeFG)] border-b-0">
         <p class="text-sm">Project Description </p>
-            <h3 class="title">Project Name <span class="title text-[#0f0098]">&#8680;</span></h3>
+            <h3 class="title">Project Name</h3>
         </div>
         <div class="z-10 text-container absolute bottom-3 right-3">
-            <p class=" text-base text-[#0f0098] px-0.5"> View Project &#8599;</p>
+            <p class=" text-base text-[var(--activeBG)] px-0.5"> View Project &#8599;</p>
         </div>
+     
      
 
 </div>
 
-<!-- <style>
-    .card {
-        --base-width: calc(50vw - 1.5rem);
-        width: var(--base-width);
-        height: calc(var(--base-width) * 14/9);
-    }
-    @media (min-width: 640px) { 
-    .card {
-        --base-width: max(calc(33.333vw - 1.5rem), calc(25vh - 1.5rem));
-        width: var(--base-width);
-        height: calc(var(--base-width) * 14/9);
-    }
-    
 
-    </style> -->
 <style>
 .text-container {
     margin-left: auto;
@@ -40,21 +27,22 @@
     width: max-content;
 }
 
+
 .card:hover .text-container {
-    color: #0f0098; /* Blue */
+    color: var(--activeBG); /* Blue */
     transition: color 0.15s ease-in 0.55s;
     
 }
 
 .text-container::after {
-    color: #0f0098; /* Blue */
+    color: var(--activeBG); /* Blue */
     content: "";
     position: absolute;
     top: 0;
     right: 100%;
     height: 100%;
     width: 100%;
-    background-color: #ffffff; /* White background */
+    background-color: var(--activeFG); /* White background */
     z-index: -1;
     transition: transform 0.15s ease-in 0.55s;
 }
@@ -64,7 +52,7 @@
 }
 
 .title {
-    padding-top: 0.5rem; /* py-2 */
+    padding-top: 0.5rem; 
     padding-bottom: 0.5rem;
 }
 

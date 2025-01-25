@@ -40,9 +40,9 @@
 </script>
 
 <header
-  id = "header" class={"sticky h-7 z-[10] top-0 duration-200 px-1 py-0.5 flex items-center justify-start gap-6 backdrop-blur-lg border-b border-solid border-[#ffffff]"}
+  id="header" class={"sticky h-7 z-[10] top-0 duration-200 px-1 py-0.5 flex items-center justify-start gap-6 backdrop-blur-lg border-b border-solid border-[var(--activeFG)]"}
 >
- <a href="" on:click={(event) => { event.preventDefault(); scrollToSection('home'); }}  ><h4 class="font-medium flex gap-3 items-center hover:text-lime-400">
+ <a href="" on:click={(event) => { event.preventDefault(); scrollToSection('home'); }}  ><h4 class="font-medium flex gap-3 items-center hover:text-[var(--activeBG)]">
     <!-- Current page title instead of name, add dropdown menu -->
     <img src="./assets/ak-logo.svg" class="h-5" alt="logo" /> Anton Kinnander 
   </h4>
@@ -55,10 +55,10 @@
     {#each tabs as tab}
     {#if tab.type !== 3}
     {#if tab.section}
-    <a href="{tab.link}" class="hover:text-lime-400 mr-4" on:click={(event) => { event.preventDefault(); scrollToSection(tab.link); }}> {tab.name}</a>
+    <a href="{tab.link}" class="hover:text-[var(--activeBG)] mr-4" on:click={(event) => { event.preventDefault(); scrollToSection(tab.link); }}> {tab.name}</a>
   
     {:else}
-    <a class="hover:text-lime-400 mr-4" href={tab.link} target="_blank">
+    <a class="hover:text-[var(--activeBG)] mr-4" href={tab.link} target="_blank">
       {tab.name}
     </a>
     {/if}

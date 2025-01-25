@@ -3,7 +3,7 @@
 
 </script>
 <div class="outer-container">
-<div class="card-container variableOpacity grid grid-cols-2 md:grid-cols-3 gap-5 sm-gap-7 mb-auto mt-20 pt-20 sm-pt-20">
+<div class="card-container grid grid-cols-2 md:grid-cols-3 gap-5 sm-gap-7 mb-auto mt-20 pt-20 sm-pt-20">
     <ProjectCard/>
     <ProjectCard/>
     <ProjectCard/>

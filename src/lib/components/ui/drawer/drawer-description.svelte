@@ -6,9 +6,19 @@
 	export { className as class };
 </script>
 
+<style>
+	:global(.drawer-desc) {
+		color: rgb(255, 255, 255);
+		margin: 0;
+		margin-right: auto;
+	}
+
+</style>
+
+
 <DrawerPrimitive.Description
 	bind:el
-	class={cn("text-muted-foreground text-sm", className)}
+	class={cn("drawer-desc text-sm", className)}
 	{...$$restProps}
 >
 	<slot />

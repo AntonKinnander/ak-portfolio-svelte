@@ -70,16 +70,21 @@
   }
 }
  
-@layer base {
+/* @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
   }
-}
+} */
 
 /* Mine */
+/* set up global background and forground variables */
+:root {
+  --activeBG: #004029;
+  --activeFG: #fffc9d;
+}
 
 html {
   scroll-behavior: smooth;
@@ -87,6 +92,8 @@ html {
 
 * {
   font-family: "Jost", sans-serif;
+  color: var(--activeFG);
+  
 }
 
 body {
@@ -106,7 +113,16 @@ h1,
 h2,
 h3, .tinos {
   font-family: "Tinos", sans-serif;
+  color: var(--activeFG);
 }
+
+/* svgs */
+svg path{
+  fill: var(--activeFG);
+  stroke: var(--activeFG);
+}
+
+
 
 /* Glass Hover Animation */
 
@@ -117,34 +133,35 @@ h3, .tinos {
 }
 
 
-    .card {
-        --base-width: min(calc(23vw + 4vh), calc(25vh + 1vw));
-    width: var(--base-width);
-    height: calc(var(--base-width) * 14/9);
-    }
+.card {
+  --base-width: min(calc(23vw + 4vh), calc(25vh + 1vw));
+  width: var(--base-width);
+  height: calc(var(--base-width) * 14/9);
+}
 
-    @media (max-width: 768px) {
-    .card{
-        --base-width: calc(50vw - 1.5rem);
+@media (max-width: 768px) {
+  .card {
+    --base-width: calc(50vw - 1.5rem);
     width: var(--base-width);
     height: calc(var(--base-width) * 14/9);
+  }
 }
-}
-.card{
-    cursor: pointer;
+
+.card {
+  cursor: pointer;
 }
 
 .overlay {
-    /* background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 0%); */
-    z-index: 11;
-    pointer-events: none;
-    margin: 0;
-    height: 125%;
-    width: 100%;    
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 0%); */
+  z-index: 11;
+  pointer-events: none;
+  margin: 0;
+  height: 125%;
+  width: 100%;    
 }
 
 .overlay:before {
-    background: linear-gradient(
+  background: linear-gradient(
     130deg, 
     transparent 0% 33%, 
     var(--g1) 66%, 
@@ -165,17 +182,16 @@ h3, .tinos {
 }
 
 .card:hover .overlay:before, .dockItem:hover .dockOverlay:before {
-    background-position: 100% 100%;
-    transform: scale(1.08, 1.03);
+  background-position: 100% 100%;
+  transform: scale(1.08, 1.03);
 }
 
-.card:hover img{
-    transform: scale(1.08);
-    transition: transform 700ms ease;
+.card:hover img {
+  transform: scale(1.08);
+  transition: transform 700ms ease;
 }
 
-.card:hover:before, .dockItem:hover:before{
-    transform: scale(1.03, 1.08);
-    z-index: -1;
+.card:hover:before, .dockItem:hover:before {
+  transform: scale(1.03, 1.08);
+  z-index: -1;
 }
-

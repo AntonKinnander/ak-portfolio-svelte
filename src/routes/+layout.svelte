@@ -3,12 +3,13 @@
   import gsap from "gsap";
   import { onMount } from 'svelte';
   import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
-
-  
+  import { scrollToSection } from "../components/utils/scroll-utils.js";
+  // import { isDrawerOpen } from "./Main.svelte";
   import { page } from "$app/stores";
   import Header from "../components/Header.svelte";
   import Footer from "../components/Footer.svelte";
   import Dock from "../components/Dock.svelte";
+  // import {open} from "./ProjectDrawer.svelte";
   // import window from "../components/window.svelte";
   // import { Section } from "lucide-svelte";
   if (typeof window !== 'undefined') {
@@ -24,11 +25,12 @@
 
 
   let tabs = [
-    { name: "Home", icon: "./assets/Icon_home.svg", link:"home", type: 3, section: 1, },
-    { name: "Projects", icon: "./assets/Icon_projects.svg", link:"projects", type: 1, section: 2, },
-    { name: "Contact", icon: "./assets/Icon_projects.svg", link:"contact", type: 2, popup: true, },
-    { name: "CodePen", icon: "./assets/Icon_codepen.svg", link:"codepen", type: 3, open:"new", },
-    { name: "About me", icon: "./assets/ak-logo.svg", link:"about", type: 1, popup: true,},
+    { name: "Home", link:"home", type: 3, onclick: () => scrollToSection("home")},
+    { name: "Projects",  link:"projects", type: 1, onclick: () => scrollToSection("projects")},
+    { name: "Contact", link:"contact", type: 2, onclick: () => window.open("https://codepen.io", "_blank")},
+    { name: "CodePen",  link: "https://codepen.io/AntonKinnander", type: 3, onclick: () => window.open("https://codepen.io", "_blank")},
+    { name: "About me", link:"about", type: 1,  onclick: () => window.open("https://codepen.io", "_blank")},
+    // (isDrawerOpen = !isDrawerOpen)
   ];
 
 

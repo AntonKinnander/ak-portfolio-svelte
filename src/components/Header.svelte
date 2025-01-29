@@ -1,52 +1,19 @@
 <script>
   export let tabs = [];
   import DateTime from "./DateTime.svelte";
-  import { gsap } from "gsap";
-  import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-  gsap.registerPlugin(ScrollToPlugin);
-  export let goToSection; // Receive the function from the parent
 
-  import { onMount } from "svelte";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { scrollToSection } from "./utils/scroll-utils.js";
-  gsap.registerPlugin(ScrollTrigger);
+
 
   import AkLogo from "./svg/ak-logo.svelte";
 
-  let headerHeight = 0;
-  onMount(() => {
-    let scrollTween;
-    const header = document.getElementById("header");
-    const panels = document.querySelectorAll("section"); // Assuming sections are the panels
 
-    if (header) {
-      headerHeight = header.offsetHeight;
-    }
-
-    function goToSection(index) {
-      scrollTween = gsap.to(window, {
-        scrollTo: {
-          y: index * (window.innerHeight - headerHeight),
-          autoKill: false,
-        },
-        duration: 1,
-        onComplete: () => (scrollTween = null),
-        overwrite: true,
-      });
-      console.log(headerHeight);
-    }
-
-    ScrollTrigger.create({
-      start: 0,
-      end: "max",
-      snap: 1 / (panels.length - 1),
-    });
-  });
 </script>
 
 <style>
-:global(h4:hover .cls-1) {
-  fill: #fff;
+ .tab-text:hover, :global(h4:hover .cls-1) {
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
 }
 
 
@@ -63,11 +30,11 @@
       scrollToSection("home");
     }}
     ><h4
-      class="font-medium flex gap-3 items-center hover:text-[var(--activeBG)]"
+      class="tab-text font-medium flex gap-3 items-center]"
     >
       <!-- Current page title instead of name, add dropdown menu -->
       <!-- <img src="./assets/ak-logo.svg" class="h-5" alt="logo" />  -->
-      <div class="h-5"><AkLogo/></div>
+      <div class="h-5 my-auto"><AkLogo/></div>
       Anton Kinnander
     </h4>
   </a>
@@ -79,7 +46,7 @@
         {#if tab.section}
           <a
             href={tab.link}
-            class="hover:text-[var(--activeBG)] mr-4"
+            class="tab-text mr-4"
             on:click={(event) => {
               event.preventDefault();
               scrollToSection(tab.link);
@@ -89,7 +56,7 @@
           >
         {:else}
           <a
-            class="hover:text-[var(--activeBG)] mr-4"
+            class="tab-text mr-4"
             href={tab.link}
             target="_blank"
           >

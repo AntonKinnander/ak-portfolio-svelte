@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 /* ShadCN */
-svg path {
+/* svg path {
   fill: var(--activeFG);
-}
+} */
 
 @layer base {
   :root {
@@ -85,8 +85,15 @@ svg path {
 /* Mine */
 /* set up global background and forground variables */
 :root {
-  --activeBG: #004029;
+  --activeBG: #0f0098;
+  --activeFG: #fffdfa;
+
+  /* --activeBG: #fffbd4;
+  --activeFG: #9d0c0c;
+  */
+  /* --activeBG: #004029;
   --activeFG: #fffc9d;
+  */
 }
 
 html {
@@ -96,11 +103,12 @@ html {
 * {
   font-family: "Jost", sans-serif;
   color: var(--activeFG);
+  transition: background-color 1s ease, color 1s ease , border-color 1s ease, fill 1s ease, stroke 1s ease;
 }
 
 body {
-  background: url("./assets/background.svg") no-repeat center calc(0px - 111vh)
-    fixed;
+  /* background: url("./assets/background.svg") no-repeat center calc(0px - 111vh)
+    fixed; */
   background-size: max(350vh, 120vw);
   height: 100vh;
 }
@@ -131,7 +139,7 @@ svg.fill{
 }
 
 .card {
-  --base-width: min(calc(23vw + 4vh), calc(25vh + 1vw));
+  --base-width: max(14.6rem, calc(10rem + 5vw + 2vh));
   width: var(--base-width);
   height: calc(var(--base-width) * 14 / 9);
 }

@@ -22,7 +22,7 @@
             </Drawer.Close>
             
             <ProjectGrid/>
-            <div class="z-5 fixed bottom-0 w-full h-1/6 bg-gradient-to-t from-[var(--activeBG)]/20 pointer-events-none" ></div>
+            <div class="z-20 fixed bottom-0 w-full h-1/6 bg-gradient-to-t from-[var(--activeBG)] pointer-events-none"></div>
           </Drawer.Content>
        
   </Drawer.Root>

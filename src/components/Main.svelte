@@ -73,7 +73,7 @@
       }
      
       if(!isDrawerOpen){
-        blurValue = Math.pow(window.scrollY, 1.1) * (1.5 / window.innerHeight);
+        blurValue = Math.pow(window.scrollY, 1.1) * (3.5 / window.innerHeight);
       }
       else{
         blurValue = lastBlurValue;
@@ -111,27 +111,30 @@
 
   .blurred{
     /* Default blur effect */
-    backdrop-filter: blur(var(--blur-value, 2px));
+    backdrop-filter: blur(var(--blur-value, 0px));
     transition: backdrop-filter 0.3s ease; /* Smooth transition */
   }
 
   .outer-background {
+    display: flex;
     position: fixed;
     width: 100vw;
-    height: 100vh;
     z-index: -1;
-    overflow: visible;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
 
   }
 
   .background {
+    /* margin: 0; */
+    /* display: flex; */
+    scale: 1.5;
+    align-self: flex-end;
     position: relative;
-    top: calc(0px - 111vh);
-   left: 50%;
-   transform: translateX(-50%);
-   width: 350vh; /* Matches `background-size: max(350vh, 120vw)` */
-   height: 350vh;
-    z-index: -1; /* Ensure it stays behind the content */
+    margin-bottom: 15%;
+    width:max(350vh, 120vw);
+    min-width: 100rem;
   }
  
  
@@ -162,18 +165,10 @@
   <section class="panel blurred"  id="projects">
     <PageProjects />
   </section>
-  <section class="panel blurred" id="home2">
-    <!-- <button on:click={() => (isDrawerOpen = !isDrawerOpen)}>
-      Toggle Drawer
-  </button> -->
-
-  <button data-melt-dialog-trigger="" data-dialog-trigger="" on:click={() => (isDrawerOpen = !isDrawerOpen)}>
-    Toggle Drawer
-</button>
-  </section>
 </div>
-<!-- background covering viewport bind:this={blurElement}-->
+<!-- background covering viewport bind:this={blurElement} - mobile media query-->
  <div class="outer-background bottom-0"> <div class="background bottom-0"><Background /></div> </div>
+ <!-- Fix gradients -->
 <div class="z-5 fixed top-0 w-full h-1/6 bg-gradient-to-b from-[var(--activeBG)]/40"></div>
 <div class="z-5 fixed bottom-0 w-full h-1/6 bg-gradient-to-t from-[var(--activeBG)]"></div>
 

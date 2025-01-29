@@ -57,7 +57,7 @@
   }
   
   /* Phone screens, full width text container, 1 image per row */
-  @media (max-width: 600px) {
+  @media (width <= 40rem)  {
     .text-container {
       width: 100%;
       min-height: 25%;
@@ -70,7 +70,7 @@
   }
   
   /* Medium screens (2 small images or 1 wide image per row) */
-  @media (min-width: 601px) and (max-width: 1024px) {
+  @media (width >= 40rem) and (width <= 64rem){
     .text-container {
       width: 50%;
       min-height: 25%;
@@ -86,7 +86,7 @@
   }
   
   /* Large screens (3 small images or 1 wide image per row) */
-  @media (min-width: 1025px) {
+  @media (width >= 64rem) {
     .text-container {
       width: calc(50% + 4.5rem); /* Reset to base style for larger screens */
     }

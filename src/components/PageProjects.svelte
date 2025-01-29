@@ -21,7 +21,7 @@
     margin-right: auto;
     margin-left: auto;
     width: fit-content;
-
+   
 }
 .outer-container{
     scroll-behavior: smooth;
@@ -31,6 +31,14 @@
 }
 ::-webkit-scrollbar {
     display: none;
+}
+
+@media (width >= 48rem) {
+    .card-container {
+    min-width: 35rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
 }
 
 </style>

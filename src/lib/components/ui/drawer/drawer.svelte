@@ -1,6 +1,6 @@
 <script>
 	import { Drawer as DrawerPrimitive } from "vaul-svelte";
-	export let shouldScaleBackground = true;
+	export let shouldScaleBackground = false;
 	export let open = false;
 	export let activeSnapPoint = undefined;
 

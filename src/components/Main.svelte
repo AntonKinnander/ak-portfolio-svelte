@@ -17,7 +17,7 @@
   let lastBlurValue = 0;
   // let opacityValue = 0;
    // Initialize opacityValue
-   let isDrawerOpen = true;
+   let isDrawerOpen = false;
   //  let drawerTrigger = null;
 
 
@@ -28,8 +28,8 @@
     let scrollTween;
     const panelElements = Array.from(panels.children);
     const header = document.getElementById("header");
-    //This fixes drawer opening animations so i keep it 
-    isDrawerOpen = false; 
+    //This fixes drawer opening animations so i keep it actually was fixed by reverting to svelte 5.1.4
+    // isDrawerOpen = false; 
     if (header) {
       headerHeight = header.offsetHeight;
     }
@@ -131,7 +131,7 @@
     /* display: flex; */
     scale: 1.5;
     align-self: flex-end;
-    position: relative;
+    position: static;
     margin-bottom: 15%;
     width:max(350vh, 120vw);
     min-width: 100rem;
@@ -150,9 +150,9 @@
   }
 </style>
 
-{#if isDrawerOpen}
+<!-- {#if isDrawerOpen} -->
 <ProjectDrawer bind:open={isDrawerOpen}>  </ProjectDrawer>
-{/if}
+<!-- {/if} -->
 
 
 
@@ -166,8 +166,8 @@
     <PageProjects />
   </section>
 </div>
-<!-- background covering viewport bind:this={blurElement} - mobile media query-->
- <div class="outer-background bottom-0"> <div class="background bottom-0"><Background /></div> </div>
+
+<div class="outer-background bottom-0"> <div class="background bottom-0"> <Background/> </div> </div>
  <!-- Fix gradients -->
 <div class="z-5 fixed top-0 w-full h-1/6 bg-gradient-to-b from-[var(--activeBG)]/40"></div>
 <div class="z-5 fixed bottom-0 w-full h-1/6 bg-gradient-to-t from-[var(--activeBG)]"></div>

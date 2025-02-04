@@ -2,21 +2,20 @@
 	import { cn } from "$lib/utils";
 	import { scrollToSection } from "./utils/scroll-utils.js";
 	import Main from "./Main.svelte";
-	export let tabs = [];
-	let hoveredIndex = false;
+
 	// Icons
 	import AkLogo from "./svg/ak-logo.svelte";
 	import HomeIcon from "./svg/home-icon.svelte";
 	import ProjectsIcon from "./svg/projects-icon.svelte";
 	import CodepenIcon from "./svg/codepen-icon.svelte";
+	// import {isDrawerOpen} from "./ProjectDrawer.svelte";
+
+	export let tabs = [];
+	let hoveredIndex = false;
 
 	function handleClick(tab, event) {
 		event.preventDefault();
-    if (tab.section) {
-      tab.onclick();
-    } else {
-      tab.onclick();
-    }
+    tab.onclick();
   }
 
 

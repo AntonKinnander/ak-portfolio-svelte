@@ -1,12 +1,13 @@
 <script>
   export let tabs = [];
   import DateTime from "./DateTime.svelte";
-
   import { scrollToSection } from "./utils/scroll-utils.js";
-
-
   import AkLogo from "./svg/ak-logo.svelte";
 
+  function handleClick(tab, event) {
+		event.preventDefault();
+    tab.onclick();
+  }
 
 </script>
 
@@ -26,8 +27,7 @@
   <a
     href=""
     on:click={(event) => {
-      event.preventDefault();
-      scrollToSection("home");
+      handleClick(tabs[0], event);
     }}
     ><h4
       class="tab-text font-medium flex gap-3 items-center]"
@@ -43,26 +43,14 @@
   >
     {#each tabs as tab}
       {#if tab.type !== 3}
-        {#if tab.section}
           <a
-            href={tab.link}
+            href="{tab.link}"
             class="tab-text mr-4"
             on:click={(event) => {
-              event.preventDefault();
-              scrollToSection(tab.link);
-            }}
-          >
+              handleClick(tab, event);
+              }}>
             {tab.name}</a
           >
-        {:else}
-          <a
-            class="tab-text mr-4"
-            href={tab.link}
-            target="_blank"
-          >
-            {tab.name}
-          </a>
-        {/if}
       {/if}
     {/each}
   </div>

@@ -49,7 +49,6 @@
 
   <Header {tabs} />
   <Dock  {tabs} />
-
   <slot />
   <Footer />
 </div>

@@ -1,5 +1,8 @@
+
+
+
 <!-- 9/16 PROJECT CARD -->
-<div class="card relative flex flex-col border border-[var(--activeFG)] border-1 border-b-none overflow-hidden bg-[var(--activeBG)]" >
+<div class="card relative flex flex-col border border-[var(--activeFG)] border-1 border-b-none overflow-hidden bg-[var(--activeBG)]">
 
     <div class="image w-full h-3/4 flex justify-center items-center bg-gray-200 ">
         <div class="overlay absolute"></div>

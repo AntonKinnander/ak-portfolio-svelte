@@ -6,21 +6,23 @@
   import ProjectDrawer from "./ProjectDrawer.svelte";
   import { DrawerTrigger } from "$lib/components/ui/drawer";
   import Background from "./svg/background.svelte";
+  import DrawerStore from "../stores/DrawerStore.js";
 
   if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
   }
-
+  let isDrawerOpen = true;
   let panels;
   let headerHeight = 0;
   let blurValue = 0; // Initialize blurValue
   let lastBlurValue = 0;
   // let opacityValue = 0;
    // Initialize opacityValue
-   let isDrawerOpen = false;
   //  let drawerTrigger = null;
 
-
+  DrawerStore.subscribe(value => {
+  isDrawerOpen = value;
+  });
 
 
 
@@ -72,6 +74,7 @@
       lastBlurValue = blurValue;
       }
      
+  
       if(!isDrawerOpen){
         blurValue = Math.pow(window.scrollY, 1.1) * (3.5 / window.innerHeight);
       }
@@ -150,17 +153,18 @@
   }
 </style>
 
-<!-- {#if isDrawerOpen} -->
-<ProjectDrawer bind:open={isDrawerOpen}>  </ProjectDrawer>
-<!-- {/if} -->
+
+
+
 
 
 
 <div bind:this={panels} class="panels">
   <section class="panel blurred" id="home">
-    <button on:click={() => (isDrawerOpen = !isDrawerOpen)}>
+    <!-- <button on:click={() => (DrawerStore.update(value => !value))}>
       Toggle Drawer
-  </button>
+  </button> -->
+
   </section>
   <section class="panel blurred"  id="projects">
     <PageProjects />
@@ -171,5 +175,5 @@
  <!-- Fix gradients -->
 <div class="z-5 fixed top-0 w-full h-1/6 bg-gradient-to-b from-[var(--activeBG)]/40"></div>
 <div class="z-5 fixed bottom-0 w-full h-1/6 bg-gradient-to-t from-[var(--activeBG)]"></div>
-
+<ProjectDrawer> </ProjectDrawer>
 

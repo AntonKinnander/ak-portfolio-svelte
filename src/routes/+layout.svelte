@@ -9,6 +9,8 @@
   import Header from "../components/Header.svelte";
   import Footer from "../components/Footer.svelte";
   import Dock from "../components/Dock.svelte";
+  import DrawerStore from "../stores/DrawerStore.js";
+  import ActivePage from "../stores/ActivePage.js";
   // import {open} from "./ProjectDrawer.svelte";
   // import window from "../components/window.svelte";
   // import { Section } from "lucide-svelte";
@@ -27,9 +29,8 @@
   let tabs = [
     { name: "Home", link:"home", type: 3, onclick: () => scrollToSection("home")},
     { name: "Projects",  link:"projects", type: 1, onclick: () => scrollToSection("projects")},
-    { name: "Contact", link:"contact", type: 2, onclick: () => window.open("https://codepen.io", "_blank")},
     { name: "CodePen",  link: "https://codepen.io/AntonKinnander", type: 3, onclick: () => window.open("https://codepen.io", "_blank")},
-    { name: "About me", link:"about", type: 1,  onclick: () => window.open("https://codepen.io", "_blank")},
+    { name: "About me", link:"about", type: 1,  onclick: () => { ActivePage.update(value => "about"); DrawerStore.update(value => true); }},
     // (isDrawerOpen = !isDrawerOpen)
   ];
 

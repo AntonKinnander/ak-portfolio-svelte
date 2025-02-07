@@ -88,12 +88,18 @@
   --activeBG: #0f0098;
   --activeFG: #fffdfa;
 
-  /* --activeBG: #fffbd4;
-  --activeFG: #9d0c0c;
-  */
+  /* --activeBG: #fcffe3;
+  --activeFG: #c80e0e; */
+ 
   /* --activeBG: #004029;
-  --activeFG: #fffc9d;
-  */
+  --activeFG: #fffc9d; */
+  
+  /* --activeBG: #00868B;
+  --activeFG: #f6dfff;
+
+  --activeBG: #cfd0cb;
+  --activeFG: #00868B; */
+ 
 }
 
 html {

@@ -1,3 +1,5 @@
 import { writable } from 'svelte/store';
 
-export const isDrawerOpen = writable(false);
+const DrawerStore = writable(false);
+
+export default DrawerStore;

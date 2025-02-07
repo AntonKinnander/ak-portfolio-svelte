@@ -51,7 +51,7 @@
 	{...$$restProps}
 >
 
-<div class="h-5 hidden sm:block"> <AkLogo/> </div>
+<div class="h-5 hidden md:block"> <AkLogo/> </div>
 <slot />
 <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-2 backdrop-blur-sm rounded-sm opacity-70 sm:hidden"></div>
 <button class="relative card overflow-hidden"><div class="overlay absolute"></div>X</button>

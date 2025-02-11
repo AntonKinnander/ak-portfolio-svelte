@@ -1,0 +1,30 @@
+{
+    "title": "DaVinci Code redesign",
+    "description": "...",
+    "type": "Book Cover",
+    "date": "2023-12",
+    "tools": ["Illustrator", "After effects", "Photoshop", "Figma", "Svelte"],
+    "colors": ["#fbf4eb","#c02e30"],
+    "thumbVideo": "thumb.mp4",
+    "mediaList": [  {
+        "file": "1.mp4",
+        "type": "video",
+        "orientation": "tall"
+    },
+    {
+        "file": "2.svg",
+        "type": "image",
+        "orientation": "wide"
+    },
+    {
+        "file": "3.jpg",
+        "type": "image",
+        "orientation": "tall"
+    },
+    {
+        "file": "4.jpg",
+        "type": "image",
+        "orientation": "wide"
+    }
+]
+}

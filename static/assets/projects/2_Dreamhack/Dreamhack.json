@@ -1,0 +1,32 @@
+{
+    "title": "Dreamhack Creative Coding",
+    "description": "...",
+    "type": "Poster",
+    "date": "2023-12",
+    "tools": ["Illustrator", "After effects", "Photoshop", "Figma", "Svelte"],
+    "colors": ["#f4e5be","#b75b13"],
+    "thumbImage": "1.jpg",
+    "mediaList": [
+        {
+            "file": "1.jpg",
+            "type": "image",
+            "orientation": "tall"
+        },
+        {
+            "file": "2.jpg",
+            "type": "image",
+            "orientation": "wide"
+        },
+        {
+            "file": "3.jpg",
+            "type": "image",
+            "orientation": "wide"
+        },
+        {
+            "file": "4.png",
+            "type": "image",
+            "orientation": "tall"
+        }
+        
+    ]
+}
